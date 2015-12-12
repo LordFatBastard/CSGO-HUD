@@ -48,6 +48,7 @@ html, body{
     transition:  .25s ease-in-out;
 }
 .time {
+    margin-top: 20px;
     font-size: 7em;
     transition:  .25s ease-in-out;
 }
@@ -63,7 +64,7 @@ html, body{
     position: fixed;
     right: 10px;
     bottom: 20px;
-    font-size: 1.2em;
+    font-size: 2.5em;
 }
 .knife td.pic img{
     max-width: 150px;

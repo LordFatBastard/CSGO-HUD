@@ -68,11 +68,8 @@ io.on("update", function(status) {
     $(".t-score").html(json.map.team_t.score);
     $(".ct-score").html(json.map.team_ct.score);
 
-    if (tickinterval) {
-        clearInterval(tickinterval);
-    }
-    console.log(json.player.name + 'being displayed');
     $(".name").html(json.player.name);
+    console.log(json.player.name + ' being displayed');
     
     roundtime = json.extra.round.timestart;
     bombtime = json.extra.round.bomb.timestart;
@@ -124,7 +121,7 @@ var flashing = false;
 
 function tick() {
     var btime = json.extra.round.bomb.maxTime - parseInt(new Date().getTime() / 1000 - bombtime);
-    var rtime = json.extra.round.maxTime - parseInt(new Date().getTime() / 1000 - roundtime);
+    var rtime = json.extra.round.maxTime - parseInt(new Date().getTime() / 1000 - roundtime) - 1;
 
     if (json.extra.round.bomb.planted) {
         $(".time").html(btime);
@@ -148,17 +145,21 @@ function tick() {
         if (rtime > 59) {
             min = 1;
             sec = rtime - 59;
-        } else {
+        }else if (rtime <= 0){
+            min = 0;
+            sec = 0;
+        }else{
             sec = rtime;
         }
-
+        
         $(".time").css("font-size", "7em");
 
         if (json.round.phase === 'freezetime') {
             $(".timelabel").html("Freeze Time");
         } else if (json.round.phase === 'live') {
-            $(".timelabel").html("Round Time");
+            $(".timelabel").html("");
         } else if (json.round.phase === 'over') {
+            rtime = 0;
             $(".timelabel").html("Round Over");
         }
 
