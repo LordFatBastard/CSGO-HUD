@@ -31,7 +31,7 @@
         
         socket.on('disconnect', function() {
             currentUsers--;
-            console.log('user left, ' + currentUsers + ' connected');
+            console.log('user disconnected, ' + currentUsers + ' connected');
         });
     });
     express.listen(webport, function() {
@@ -107,4 +107,4 @@
         io.emit("update", JSON.stringify(json));
     }
     server.listen(csgoport);
-    console.log('\tListening for csgo data at http://' + host + ':' + webport);
+    console.log('\tListening for csgo data at http://' + host + ':' + csgoport);

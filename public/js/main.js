@@ -55,6 +55,7 @@ var icons = {
     knife_karambit: "http://vignette4.wikia.nocookie.net/cswikia/images/5/57/Knife_karambit_hud_outline_csgo.png/revision/latest/scale-to-width-down/400",
     knife_m9_bayonet: "http://vignette4.wikia.nocookie.net/cswikia/images/d/d3/Csgo_knife_M9_Bayonet.png/revision/latest/scale-to-width-down/400",
     knife_shadow_dagger: "http://vignette4.wikia.nocookie.net/cswikia/images/f/f1/Knife_push_hud_outline_csgo.png/revision/latest/scale-to-width-down/400"
+}
 
 var tickinterval;
 
@@ -67,8 +68,8 @@ io.on("update", function(status) {
     $(".t-score").html(json.map.team_t.score);
     $(".ct-score").html(json.map.team_ct.score);
 
-    if (interval) {
-        clearInterval(interval);
+    if (tickinterval) {
+        clearInterval(tickinterval);
     }
     console.log(json.player.name + 'being displayed');
     $(".name").html(json.player.name);
